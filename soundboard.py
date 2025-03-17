@@ -6,7 +6,7 @@ import random
 import keyboard
 import threading
 
-# Sound library organized into situations
+#Sound library
 soundLibrary = {
     
     "greeting": [
@@ -14,29 +14,49 @@ soundLibrary = {
         "Sounds/Greeting/GermanHi.wav",
         "Sounds/Greeting/Greetings.wav",
         "Sounds/Greeting/Hello.wav",
-        "Sounds/Greeting/HelloShield.wav",
+        "Sounds/Greeting/HelloLady.wav",
         "Sounds/Greeting/HelloWelcome.wav",
-        "Sounds/Greeting/HelloYoungLady.wav",
-        "Sounds/Greeting/HiSpanish.wav",
-        "Sounds/Greeting/Hi.wav"
-
+        "Sounds/Greeting/Hi.wav",
+        "Sounds/Greeting/HiHello.wav",
+        "Sounds/Greeting/HiSpanish.wav"
     ],
     "gratitude": [
-        "Sounds/Gratitude/AreYouDoctor.wav",
-        "Sounds/Gratitude/GreatService.wav",
+        "Sounds/Gratitude/AreYouADoctor.wav",
+        "Sounds/Gratitude/ExpressSatisfaction.wav",
         "Sounds/Gratitude/HiThankYou.wav",
+        "Sounds/Gratitude/HowNice.wav",
         "Sounds/Gratitude/IdLikeAnotherOne.wav",
         "Sounds/Gratitude/IExpected.wav",
         "Sounds/Gratitude/IHadAGreatTime.wav",
-        "Sounds/Gratitude/ItArrived.wav",
-        "Sounds/Gratitude/NiceComany.wav",
-        "Sounds/Gratitude/PleasantSensation.wav",
-        "Sounds/Gratitude/ReallyEnjoyedThat.wav",
-        "Sounds/Gratitude/Satisfaction.wav",
+        "Sounds/Gratitude/IReallyEnjoyedThat.wav",
+        "Sounds/Gratitude/ItHasArrived.wav",
+        "Sounds/Gratitude/Pleasant.wav",
+        "Sounds/Gratitude/ServiceHere.wav",
         "Sounds/Gratitude/ThanksInAdvance.wav",
         "Sounds/Gratitude/ThankYou.wav",
-        "Sounds/Gratitude/ThankYouVeryMuch.wav" 
+        "Sounds/Gratitude/ThankYouVeryMuch.wav"
     ],
+    "funfact": [
+        "Sounds/FunFact/FunArcade.wav",
+        "Sounds/FunFact/FunBanana.wav",
+        "Sounds/FunFact/FunCouch.wav",
+        "Sounds/FunFact/FunDallas.wav",
+        "Sounds/FunFact/FunDecaptation.wav",
+        "Sounds/FunFact/FunDoomsday.wav",
+        "Sounds/FunFact/FunFlash.wav",
+        "Sounds/FunFact/FunHome.wav",
+        "Sounds/FunFact/FunIdentity.wav",
+        "Sounds/FunFact/FunNeeds.wav",
+        "Sounds/FunFact/FunNeon.wav",
+        "Sounds/FunFact/FunNes.wav",
+        "Sounds/FunFact/FunNutrition.wav",
+        "Sounds/FunFact/FunPlants.wav",
+        "Sounds/FunFact/FunSpace.wav",
+        "Sounds/FunFact/FunTelevision.wav",
+        "Sounds/FunFact/FunTv.wav",
+        "Sounds/FunFact/FunWeapon.wav",
+        "Sounds/FunFact/FunZebra.wav"
+    ]
 }
 
 #Window config
@@ -56,12 +76,13 @@ def Create_Window():
     Window.iconphoto(True, Iconphoto)
     Window.config(background = "light blue")
 
+#Play sound function
 def playSound(soundGroup):
     if soundGroup in soundLibrary:
         randomSound = random.choice(soundLibrary[soundGroup])
         winsound.PlaySound(randomSound, winsound.SND_ASYNC + winsound.SND_FILENAME)
 
-#Generates a button based on the sound group
+#Button generator based on category
 def generateButton(text, soundGroup, bind, row, col):
     button = Button(
         Window,
@@ -79,24 +100,20 @@ def generateButton(text, soundGroup, bind, row, col):
 
     keyboard.add_hotkey(bind.lower(), lambda: playSound(soundGroup))
 
-# Manually create buttons with center alignment
 generateButton("Greeting", "greeting", "g", row=1, col=0)
-generateButton("Gratitude", "gratitude", "h", row=1, col=1)  # This will be in the center
-generateButton("Test", "greeting", "j", row=1, col=2)
-
-# Center the buttons using column configuration
+generateButton("Gratitude", "gratitude", "h", row=1, col=1)
+generateButton("FunFact", "funfact", "j", row=1, col=2)
 
 Window.grid_columnconfigure(0, weight=1, uniform="equal")
-Window.grid_columnconfigure(1, weight=1, uniform="equal")  # Center column
+Window.grid_columnconfigure(1, weight=1, uniform="equal")  
 Window.grid_columnconfigure(2, weight=1, uniform="equal")
 
 def runBackground():
     keyboard.wait()
 
-hotkey_thread = threading.Thread(target=runBackground, daemon=True)
-hotkey_thread.start()
+hotkeyThread = threading.Thread(target=runBackground, daemon=True)
+hotkeyThread.start()
 
 Create_Window()
-
 
 Window.mainloop()
