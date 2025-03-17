@@ -47,6 +47,8 @@ Window.maxsize(1000,700)
 Window.resizable(False, False)
 Window.configure(bg="#2A2929")
 
+SoundboardButton = ImageTk.PhotoImage(file="Assets/Button.png")
+
 #Window design
 def Create_Window():
     photo = Image.open("chicken.png").resize((300, 100))
@@ -54,42 +56,47 @@ def Create_Window():
     Window.iconphoto(True, Iconphoto)
     Window.config(background = "light blue")
 
-    SoundboardButton = ImageTk.PhotoImage(file="Neuromancer.jpg")
+def playSound(soundGroup):
+    if soundGroup in soundLibrary:
+        randomSound = random.choice(soundLibrary[soundGroup])
+        winsound.PlaySound(randomSound, winsound.SND_ASYNC + winsound.SND_FILENAME)
 
-    #Different buttons (to be optimized)
-    greetingsButton = Button(Window, text="Greeting", image=SoundboardButton, compound="center", height=150, width=200, background="#000000", relief="solid", activebackground="#000000", command=playRandomGratitude)
-    greetingsButton.grid(row=1, column=1, padx=20, pady=20, sticky="we")
-    gratitudeButton = Button(Window, text="Gratitude", image=SoundboardButton, compound="center", height=150, width=200, background="#000000", relief="solid", activebackground="#000000", command=playRandomGreeting)
-    gratitudeButton.grid(row=1, column=2, padx=20, pady=20, sticky="we")
+#Generates a button based on the sound group
+def generateButton(text, soundGroup, bind, row, col):
+    button = Button(
+        Window,
+        text=text,
+        image=SoundboardButton,
+        compound="center",
+        height=150,
+        width=200,
+        background="#000000",
+        relief="solid",
+        activebackground="#000000",
+        command=lambda: playSound(soundGroup)
+    )
+    button.grid(row=row, column=col, padx=20, pady=20)
 
-    #Bind key
-    Window.bind('<g>', lambda event: playRandomGreeting())
-    Window.bind('<h>', lambda event: playRandomGratitude())
-    # Keep reference to the image to avoid garbage collection
-    greetingsButton.image = SoundboardButton
+    keyboard.add_hotkey(bind.lower(), lambda: playSound(soundGroup))
 
-# Function that plays a random greeting sound
-def playRandomGreeting():
-    # Randomly choose a sound from the "greetings" list
-    randomGreeting = random.choice(soundLibrary["greeting"])
-    winsound.PlaySound(randomGreeting, winsound.SND_ASYNC + winsound.SND_FILENAME)
-def playRandomGratitude():
-    # Randomly choose a sound from the "greetings" list
-    randomGratitude = random.choice(soundLibrary["gratitude"])
-    winsound.PlaySound(randomGratitude, winsound.SND_ASYNC + winsound.SND_FILENAME)
+# Manually create buttons with center alignment
+generateButton("Greeting", "greeting", "g", row=1, col=0)
+generateButton("Gratitude", "gratitude", "h", row=1, col=1)  # This will be in the center
+generateButton("Test", "greeting", "j", row=1, col=2)
 
-def handleHotkeys():
-    # Listen for the 'g' key globally
-    keyboard.add_hotkey('g', playRandomGreeting)
-    keyboard.add_hotkey('h', playRandomGratitude)
+# Center the buttons using column configuration
 
-    # Keep the program running to listen for key events
+Window.grid_columnconfigure(0, weight=1, uniform="equal")
+Window.grid_columnconfigure(1, weight=1, uniform="equal")  # Center column
+Window.grid_columnconfigure(2, weight=1, uniform="equal")
+
+def runBackground():
     keyboard.wait()
 
-hotkey_thread = threading.Thread(target=handleHotkeys, daemon=True)
+hotkey_thread = threading.Thread(target=runBackground, daemon=True)
 hotkey_thread.start()
 
 Create_Window()
 
-# Create the window loop
+
 Window.mainloop()
