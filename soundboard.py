@@ -9,6 +9,30 @@ import threading
 #Sound library
 soundLibrary = {
     
+    "acknowledged": [
+
+    ],
+    "funfact": [
+        "Sounds/FunFact/FunArcade.wav",
+        "Sounds/FunFact/FunBanana.wav",
+        "Sounds/FunFact/FunCouch.wav",
+        "Sounds/FunFact/FunDallas.wav",
+        "Sounds/FunFact/FunDecaptation.wav",
+        "Sounds/FunFact/FunDoomsday.wav",
+        "Sounds/FunFact/FunFlash.wav",
+        "Sounds/FunFact/FunHome.wav",
+        "Sounds/FunFact/FunIdentity.wav",
+        "Sounds/FunFact/FunNeeds.wav",
+        "Sounds/FunFact/FunNeon.wav",
+        "Sounds/FunFact/FunNes.wav",
+        "Sounds/FunFact/FunNutrition.wav",
+        "Sounds/FunFact/FunPlants.wav",
+        "Sounds/FunFact/FunSpace.wav",
+        "Sounds/FunFact/FunTelevision.wav",
+        "Sounds/FunFact/FunTv.wav",
+        "Sounds/FunFact/FunWeapon.wav",
+        "Sounds/FunFact/FunZebra.wav"
+    ],
     "greeting": [
         "Sounds/Greeting/DontFeedTheAnimals.wav",
         "Sounds/Greeting/GermanHi.wav",
@@ -36,27 +60,13 @@ soundLibrary = {
         "Sounds/Gratitude/ThankYou.wav",
         "Sounds/Gratitude/ThankYouVeryMuch.wav"
     ],
-    "funfact": [
-        "Sounds/FunFact/FunArcade.wav",
-        "Sounds/FunFact/FunBanana.wav",
-        "Sounds/FunFact/FunCouch.wav",
-        "Sounds/FunFact/FunDallas.wav",
-        "Sounds/FunFact/FunDecaptation.wav",
-        "Sounds/FunFact/FunDoomsday.wav",
-        "Sounds/FunFact/FunFlash.wav",
-        "Sounds/FunFact/FunHome.wav",
-        "Sounds/FunFact/FunIdentity.wav",
-        "Sounds/FunFact/FunNeeds.wav",
-        "Sounds/FunFact/FunNeon.wav",
-        "Sounds/FunFact/FunNes.wav",
-        "Sounds/FunFact/FunNutrition.wav",
-        "Sounds/FunFact/FunPlants.wav",
-        "Sounds/FunFact/FunSpace.wav",
-        "Sounds/FunFact/FunTelevision.wav",
-        "Sounds/FunFact/FunTv.wav",
-        "Sounds/FunFact/FunWeapon.wav",
-        "Sounds/FunFact/FunZebra.wav"
-    ]
+    "helpme": [
+
+    ],
+    "incoming": [
+
+    ],
+
 }
 
 #Window config
