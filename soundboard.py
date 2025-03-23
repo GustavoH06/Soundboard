@@ -12,26 +12,28 @@ soundLibrary = {
     "acknowledged": [
 
     ],
+    "completeMission": [
+    ],
     "funfact": [
-        "Sounds/FunFact/FunArcade.wav",
-        "Sounds/FunFact/FunBanana.wav",
-        "Sounds/FunFact/FunCouch.wav",
-        "Sounds/FunFact/FunDallas.wav",
-        "Sounds/FunFact/FunDecaptation.wav",
-        "Sounds/FunFact/FunDoomsday.wav",
-        "Sounds/FunFact/FunFlash.wav",
-        "Sounds/FunFact/FunHome.wav",
-        "Sounds/FunFact/FunIdentity.wav",
-        "Sounds/FunFact/FunNeeds.wav",
-        "Sounds/FunFact/FunNeon.wav",
-        "Sounds/FunFact/FunNes.wav",
-        "Sounds/FunFact/FunNutrition.wav",
-        "Sounds/FunFact/FunPlants.wav",
-        "Sounds/FunFact/FunSpace.wav",
-        "Sounds/FunFact/FunTelevision.wav",
-        "Sounds/FunFact/FunTv.wav",
-        "Sounds/FunFact/FunWeapon.wav",
-        "Sounds/FunFact/FunZebra.wav"
+        "Sounds/Done/FunFact/FunArcade.wav",
+        "Sounds/Done/FunFact/FunBanana.wav",
+        "Sounds/Done/FunFact/FunCouch.wav",
+        "Sounds/Done/FunFact/FunDallas.wav",
+        "Sounds/Done/jFunFact/FunDecaptation.wav",
+        "Done/Sounds/FunFact/FunDoomsday.wav",
+        "Done/Sounds/FunFact/FunFlash.wav",
+        "Done/Sounds/FunFact/FunHome.wav",
+        "Done/Sounds/FunFact/FunIdentity.wav",
+        "Done/Sounds/FunFact/FunNeeds.wav",
+        "Done/Sounds/FunFact/FunNeon.wav",
+        "Done/Sounds/FunFact/FunNes.wav",
+        "DoneSounds/FunFact/FunNutrition.wav",
+        "Done/Sounds/FunFact/FunPlants.wav",
+        "Done/Sounds/FunFact/FunSpace.wav",
+        "DoneSounds/FunFact/FunTelevision.wav",
+        "DoneSounds/FunFact/FunTv.wav",
+        "Done/Sounds/FunFact/FunWeapon.wav",
+        "DoneSounds/FunFact/FunZebra.wav"
     ],
     "greeting": [
         "Sounds/Greeting/DontFeedTheAnimals.wav",
@@ -63,9 +65,30 @@ soundLibrary = {
     "helpme": [
 
     ],
+    "helpTeam": [
+        "Sounds/HelpingTeam/FirstAidLocate.wav",
+
+    ],
     "incoming": [
 
     ],
+    "intimidation": [
+
+    ],
+    "inspire": [
+
+    ],
+    "initiating": [
+
+    ],
+    "responsewait":[
+
+    ],
+    "roberry":[
+
+    ]
+    
+
 
 }
 
@@ -113,6 +136,7 @@ def generateButton(text, soundGroup, bind, row, col):
 generateButton("Greeting", "greeting", "g", row=1, col=0)
 generateButton("Gratitude", "gratitude", "h", row=1, col=1)
 generateButton("FunFact", "funfact", "j", row=1, col=2)
+generateButton("Help Team", "helpTeam", "k", row=2, col=0)
 
 Window.grid_columnconfigure(0, weight=1, uniform="equal")
 Window.grid_columnconfigure(1, weight=1, uniform="equal")  
